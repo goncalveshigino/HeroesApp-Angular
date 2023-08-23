@@ -12,57 +12,73 @@
    <mat-card class="card">
      <mat-card-content>
 
-      <div class="grid">
+      <form class="grid" [formGroup]="heroForm" (ngSubmit)="onSubmit()">
 
-        <mat-form-field class="col-12 sm:col-6">
-           <mat-label>Super heroe</mat-label>
-           <input
+          <mat-form-field class="col-12 sm:col-6">
+            <mat-label>Super heroe</mat-label>
+            <input
+                matInput
+                type="text"
+                required
+                formControlName="superhero"
+              />
+          </mat-form-field>
+
+
+          <mat-form-field class="col-12 sm:col-6">
+            <mat-label>Alter ego</mat-label>
+            <input
               matInput
               type="text"
               required
+              formControlName="alter_ego"
             />
         </mat-form-field>
 
 
-        <mat-form-field class="col-12 sm:col-6">
-          <mat-label>Alter ego</mat-label>
+        <mat-form-field class="col-12">
+          <mat-label>Primeira aparicion</mat-label>
           <input
-             matInput
-             type="text"
-             required
-           />
-       </mat-form-field>
+            matInput
+            type="text"
+            required
+            formControlName="first_appearance"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="col-12">
+          <mat-label>Personagens</mat-label>
+          <input
+            matInput
+            type="text"
+            required
+            formControlName="characters"
+          />
+        </mat-form-field>
 
 
-       <mat-form-field class="col-12">
-        <mat-label>Primeira aparicion</mat-label>
-        <input
-           matInput
-           type="text"
-           required
-         />
-      </mat-form-field>
+        <mat-form-field class="col-12">
+          <mat-label>Criador</mat-label>
+          <mat-select
+          formControlName="publisher"
+          required>
+            <mat-option *ngFor="let publisher of publishers"
+                [value]="publisher.id">
+                {{ publisher.desc}}
+              </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field class="col-12">
-        <mat-label>Personagens</mat-label>
-        <input
-           matInput
-           type="text"
-           required
-         />
-      </mat-form-field>
+        <mat-form-field class="col-12">
+          <mat-label>Alternative Image</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="alt_img"
+          />
+        </mat-form-field>
 
-
-      <mat-form-field class="col-12">
-        <mat-label>Criador</mat-label>
-         <mat-select required="">
-           <mat-option *ngFor="let publisher of publishers"
-              [value]="publisher.id">
-              {{ publisher.desc}}
-            </mat-option>
-         </mat-select>
-      </mat-form-field>
-      </div>
+    </form>
 
      <div class="flex justify-content-between">
         <button
@@ -73,7 +89,8 @@
 
       <button
         mat-flat-button
-        color="primary">
+        color="primary"
+        (click)="onSubmit()">
         <mat-icon>save</mat-icon>
           Guardar
       </button>
@@ -87,8 +104,11 @@
   <div class="col-12 sm:col-6">
 
      <mat-card>
-      <img src="" alt="Imagem do heroi" mat-card-image>
+      <img [src]="currentHero | heroImage " alt="Imagem do heroi" mat-card-image>
      </mat-card>
 
   </div>
 </div>
+
+
+
