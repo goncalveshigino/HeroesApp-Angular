@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Hero } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
@@ -14,6 +14,7 @@ export class SearchPageComponent {
 
   public searchInput = new FormControl('');
   public heroes: Hero[] = [];
+  
   public selectedHero?: Hero;
 
   constructor( private heroesService: HeroesService ){}

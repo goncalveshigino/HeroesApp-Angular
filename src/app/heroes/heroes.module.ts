@@ -17,6 +17,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 
 
 
+
 @NgModule({
   declarations: [
     HeroPageComponent,
@@ -26,7 +27,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     SearchPageComponent,
     CardComponent,
     HeroImagePipe,
-    ConfirmDialogComponent
+
   ],
   imports: [
     CommonModule,

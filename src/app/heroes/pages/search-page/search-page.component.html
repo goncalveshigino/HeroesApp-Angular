@@ -29,6 +29,54 @@
 
   </mat-form-field>
 
-  {{ selectedHero | json }}
+
+
+  <div *ngIf="selectedHero" class="grid p-2">
+
+    <mat-card class="col-3">
+
+      <mat-card-header>
+        <mat-card-title>{{ selectedHero.alter_ego }}</mat-card-title>
+        <mat-card-subtitle>{{ selectedHero.superhero }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <img [src]=" selectedHero | heroImage" [alt]="selectedHero.superhero" mat-card-image>
+
+    </mat-card>
+
+    <mat-card class="col-12 sm:col-6">
+
+      <mat-card-header>
+        <mat-card-title class="mt-10">Informacao</mat-card-title>
+        <mat-card-subtitle>{{ selectedHero.superhero }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item>{{ selectedHero.first_appearance }}</mat-list-item>
+          <mat-list-item>{{ selectedHero.characters }}</mat-list-item>
+          <mat-list-item>{{ selectedHero.publisher }}</mat-list-item>
+          <mat-list-item>{{ selectedHero.alter_ego }}</mat-list-item>
+        </mat-list>
+      </mat-card-content>
+
+      <mat-card-actions>
+
+        <span></span>
+
+        <button
+          mat-button
+          mat-raised
+          color="warn"
+          [routerLink]="['/heroes/edit', selectedHero.id ]">
+          <mat-icon>logout</mat-icon>
+          Voltar
+        </button>
+
+      </mat-card-actions>
+
+    </mat-card>
+
+</div>
 
 </div>
